@@ -1,5 +1,5 @@
 import express from "express";
-import {createTienda} from "../controllers/tiendasControlers.js"
+import {createTienda, readTienda} from "../controllers/tiendasControlers.js"
 
 const tiendaRouter = express.Router()
 
@@ -11,7 +11,9 @@ tiendaRouter.post("/", (req, res)=>{
 
 //Leer
 //GET
-tiendaRouter.get("/", (req, res)=>{})
+tiendaRouter.get("/:_id", (req, res)=>{
+    readTienda(req, res)
+})
 
 //Actualizar
 //PUT
