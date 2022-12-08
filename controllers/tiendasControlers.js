@@ -10,6 +10,8 @@ export async function createTienda(req, res){
 
     let documento = null
 
+    
+
     try{
         documento = await tiendaModel.create(tienda)
     }catch(error){
@@ -38,4 +40,25 @@ export async function readTienda(req, res){
 
    res.json(documento)
    res.status(200)
+}
+
+//actualizar tiendas
+export async function updateTienda(req, res){
+
+}
+
+//eliminar tiendas
+export async function deleteTienda(req, res){
+    const {id} =req.params
+    let documento = null
+
+    try{
+        documento = await tiendaModel.findByIdAndDelete({"_id":id})
+    }catch(error){
+        res.status(400);
+        res.json(error.message);
+        return;
+    }
+    res.sendStatus(200)
+    res.json(documento)
 }

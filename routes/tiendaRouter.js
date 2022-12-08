@@ -1,5 +1,5 @@
 import express from "express";
-import {createTienda, readTienda} from "../controllers/tiendasControlers.js"
+import {createTienda, readTienda, deleteTienda, updateTienda} from "../controllers/tiendasControlers.js"
 
 const tiendaRouter = express.Router()
 
@@ -17,10 +17,14 @@ tiendaRouter.get("/:_id", (req, res)=>{
 
 //Actualizar
 //PUT
-tiendaRouter.put("/:id", (req, res)=>{})
+tiendaRouter.put("/:_id", (req, res)=>{
+    updateTienda(req, res)
+})
 
 //Eliminar
 //DELETE
-tiendaRouter.delete("/:id", (req, res)=>{})
+tiendaRouter.delete("/:id", (req, res)=>{
+    deleteTienda(req, res)
+})
 
 export default tiendaRouter;
