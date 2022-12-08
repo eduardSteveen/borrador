@@ -9,7 +9,7 @@ app.listen(puerto, ()=>{
     console.log("el servidor se esta ejecutando")
 })
 
-mongoose.connect("mongodb+srv://eduard:eduard@cluster0.cz5cjtl.mongodb.net/inicio?retryWrites=true&w=majority", (err)=>{
+mongoose.connect("mongodb+srv://SuperCars:SuperCars@supercarscluster.ihqmraz.mongodb.net/SuperCarsDB?retryWrites=true&w=majority", (err)=>{
     if(err){
         console.log(err)
     }else{

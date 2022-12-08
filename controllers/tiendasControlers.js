@@ -4,13 +4,9 @@ import tiendaModel from "../models/tiendaModel.js"
 export async function createTienda(req, res){
 
     const tienda = req.body;
-    const cant = await tiendaModel.count()+1;
-
-    tienda._id =cant
-
+    let id = tienda.ciudad.substring(0,3)+tienda.sede.substring(0,3)
     let documento = null
-
-    
+    tienda._id= id.toUpperCase()
 
     try{
         documento = await tiendaModel.create(tienda)
@@ -44,7 +40,21 @@ export async function readTienda(req, res){
 
 //actualizar tiendas
 export async function updateTienda(req, res){
+    const {id} = req.params
+    const {cambios}= req.body
 
+    let documento=null
+
+    try{
+        documento = await tiendaModel.updateOne({_id:id},cambios)
+    }catch(error){
+        res.status(400)
+        res.json(error.message)
+        return;
+    }
+
+    res.status(200)
+    res.json(documento)
 }
 
 //eliminar tiendas

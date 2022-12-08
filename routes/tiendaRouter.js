@@ -17,7 +17,7 @@ tiendaRouter.get("/:_id", (req, res)=>{
 
 //Actualizar
 //PUT
-tiendaRouter.put("/:_id", (req, res)=>{
+tiendaRouter.put("/:id", (req, res)=>{
     updateTienda(req, res)
 })
 
