@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import tiendaRouter from "./routes/tiendaRouter.js"
+import cors from "cors" 
 
 const app = express()
 const puerto = process.env.PORT || 8090
@@ -17,5 +18,6 @@ mongoose.connect("mongodb+srv://SuperCars:SuperCars@supercarscluster.ihqmraz.mon
     }
 })
 
+app.use(cors({origin:"http://localhost:3000"}))
 app.use(express.json())
 app.use("/tienda", tiendaRouter)

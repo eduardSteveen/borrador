@@ -3,8 +3,9 @@ import tiendaModel from "../models/tiendaModel.js"
 //creacion tienda
 export async function createTienda(req, res){
 
-    const tienda = req.body;
-    let id = tienda.ciudad.substring(0,3)+tienda.sede.substring(0,3)
+    const tienda = req.headers;
+    console.log(tienda.ciudad);
+    let id = tienda.ciudad.substring(0, 3)+tienda.sede.substring(0, 3)
     let documento = null
     tienda._id= id.toUpperCase()
 
