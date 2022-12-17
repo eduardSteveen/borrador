@@ -43,12 +43,15 @@ export async function readTienda(req, res){
 //actualizar tiendas
 export async function updateTienda(req, res){
     const {id} = req.params
-    const {cambios}= req.body
-
+    const cambio= req.headers
     let documento=null
 
     try{
-        documento = await tiendaModel.updateOne({_id:id},cambios)
+        documento = await tiendaModel.updateOne({
+            _id:id
+        },
+            cambio,{ runValidators: true}
+        )
     }catch(error){
         res.status(400)
         res.json(error.message)
